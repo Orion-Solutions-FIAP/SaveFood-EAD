@@ -1,7 +1,8 @@
-﻿@model Category
+﻿@model Storage
 @{
-    ViewData["Title"] = "Create Category";
+    ViewData["Title"] = "Create Storage";
 }
+
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link rel="stylesheet" href="~/css/register-card.css" />
@@ -9,12 +10,9 @@
 
 <form asp-action="Create">
     <div class="form-row form">
-        <div class="img">
-            <img src="~/img/category/category.png" class="img-register" alt="img-category" id="img-category" />
-        </div>
         <div class="card">
             <div class="card-body">
-                <h1 class="title">Categoria</h1>
+                <h1 class="title">Armazenamento</h1>
                 <div class="form-group">
                     <label asp-for="Name"></label>
                     <input asp-for="Name" class="form-control" />
@@ -25,6 +23,9 @@
                     <input type="submit" value="Cadastrar" class="btn btn-save " />
                 </div>
             </div>
+        </div>
+        <div class="img">
+            <img src="~/img/storage/storage.png" class="img-register" alt="img-storage" id="img-storage" />
         </div>
     </div>
 </form>
