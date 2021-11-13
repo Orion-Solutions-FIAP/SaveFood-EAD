@@ -1,0 +1,30 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Create Category";
+}
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <link rel="stylesheet" href="~/css/category.css" />
+</asp:Content>
+
+<form asp-action="Create">
+    <div class="form-row form">
+        <div class="img">
+            <img src="~/img/category/category.png" alt="img-category" id="img-category" />
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h1 class="title">Categoria</h1>
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-inline">
+                    <a asp-action="Index" asp-controller="Product" class="btn btn-return">Voltar</a>
+                    <input type="submit" value="Cadastrar" class="btn btn-save " />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

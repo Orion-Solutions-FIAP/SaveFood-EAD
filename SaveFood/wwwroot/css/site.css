@@ -86,6 +86,11 @@ body {
     font-size: 20px;
 }
 
-.btn-cancel {
+.btn-cancel, .btn-return {
     background-color: #393E41;
+    margin-right: 15px;
+}
+
+.btn-save {
+    background-color: #2E933C;
 }
