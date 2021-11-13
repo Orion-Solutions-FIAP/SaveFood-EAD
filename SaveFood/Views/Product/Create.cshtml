@@ -1,0 +1,61 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <link rel="stylesheet" href="~/css/product.css" />
+</asp:Content>
+
+<form asp-action="Create">
+    <div class="form-row form">
+        <div class="card">
+            <div class="card-body">
+
+                <h1 class="title">Cadastro de Produto</h1>
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ExpirationDate"></label>
+                    <input asp-for="ExpirationDate" class="form-control" />
+                    <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Amount"></label>
+                    <input asp-for="Amount" class="form-control" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="StorageId"></label>
+                    <select class="form-control select-input" asp-for="StorageId" asp-items="ViewBag.Storages">
+                        <option value="">Selecione</option>
+                    </select>
+                    <span asp-validation-for="StorageId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CategoryId"></label>
+                    <select class="form-control select-input" asp-for="CategoryId" asp-items="ViewBag.Categories">
+                        <option value="">Selecione</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                <div class="form-inline">
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-cancel">Cancelar</a>
+                    <input type="submit" value="Cadastrar" class="btn btn-create " />
+                </div>
+            </div>
+        </div>
+        <div class="img">
+            <img src="~/img/product/product-create.png" alt="img-create-product" id="img-create-product" />
+        </div>
+    </div>
+</form>

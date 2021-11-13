@@ -1,0 +1,46 @@
+﻿.form {
+    margin: 0px 46px 15px 80px;
+}
+
+.form-inline, .img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: rgba(46, 147, 60, 0.8);
+    box-shadow: -3px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+#img-create-product {
+    width: 80%;
+    height: auto;
+}
+
+.title {
+    text-align: center;
+    font-family: 'Staatliches', cursive;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+label, .title {
+    color: #FFFFFF;
+}
+
+label {
+    font-family: 'Courgette', cursive;
+    font-size: 17px;
+    margin: auto;
+}
+
+.btn-create {
+    background-color: #E94F37;
+    width: 100px;
+}
+
+.btn-cancel {
+    margin-right: 15px;
+}
