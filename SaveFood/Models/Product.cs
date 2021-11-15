@@ -5,6 +5,7 @@ namespace SaveFood.Models
 {
     public class Product
     {
+        public int Id { get; set; }
         [Display(Name="Nome")]
         public string Name { get; set; }
         [Display(Name= "Data de validade"), DataType(DataType.Date)]
@@ -15,7 +16,13 @@ namespace SaveFood.Models
         public int StorageId { get; set; }
         [Display(Name = "Categoria")]
         public int CategoryId { get; set; }
+        public Status Status { get; set; }
         public Storage Storages { get; set; }
         public Category Categories { get; set; }
+    }
+
+    public enum Status 
+    {
+
     }
 }

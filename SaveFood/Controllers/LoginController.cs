@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SaveFood.Models;
+using System.Security.Claims;
 
 namespace SaveFood.Controllers
 {
@@ -11,6 +9,12 @@ namespace SaveFood.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(Login login) 
+        {
+            return RedirectToAction("Index", "Product");
         }
     }
 }

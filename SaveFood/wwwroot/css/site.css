@@ -94,3 +94,9 @@ body {
 .btn-save {
     background-color: #2E933C;
 }
+
+
+.nav-link {
+    font-family: 'Staatliches', cursive;
+    font-size: 20px;
+}
