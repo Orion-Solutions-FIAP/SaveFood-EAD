@@ -44,3 +44,11 @@ label {
 .btn-cancel {
     margin-right: 15px;
 }
+
+.btn {
+    font-size: 17px !important;
+}
+
+.create-link {
+    border-radius: 0 5px 5px 0 !important;
+}

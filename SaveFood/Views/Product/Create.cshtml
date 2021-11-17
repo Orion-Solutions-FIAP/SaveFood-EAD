@@ -35,19 +35,30 @@
 
                 <div class="form-group">
                     <label asp-for="StorageId"></label>
-                    <select class="form-control select-input" asp-for="StorageId" asp-items="ViewBag.Storages">
-                        <option value="">Selecione</option>
-                    </select>
-                    <span asp-validation-for="StorageId" class="text-danger"></span>
+                    <div class="input-group">
+                        <select class="form-control select-input" asp-for="StorageId" asp-items="ViewBag.Storages">
+                            <option value="">Selecione</option>
+                        </select>
+                        <div class="input-group-append">
+                            <a asp-action="Create" asp-controller="Storage" class="btn btn-primary create-link"><i class="bi bi-plus-circle"></i></a>
+                        </div>
+                        <span asp-validation-for="StorageId" class="text-danger"></span>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="CategoryId"></label>
-                    <select class="form-control select-input" asp-for="CategoryId" asp-items="ViewBag.Categories">
-                        <option value="">Selecione</option>
-                    </select>
-                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    <div class="input-group">
+                        <select class="form-control select-input" asp-for="CategoryId" asp-items="ViewBag.Categories">
+                            <option value="">Selecione</option>
+                        </select>
+                        <div class="input-group-append">
+                            <a asp-action="Create" asp-controller="Category" class="btn btn-primary create-link"><i class="bi bi-plus-circle"></i></a>
+                        </div>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
                 </div>
+
                 <div class="form-inline">
                     <a asp-action="Index" asp-controller="Home" class="btn btn-cancel">Cancelar</a>
                     <input type="submit" value="Cadastrar" class="btn btn-create " />
