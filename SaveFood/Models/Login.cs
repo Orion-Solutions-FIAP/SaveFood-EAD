@@ -4,11 +4,11 @@ namespace SaveFood.Models
 {
     public class Login
     {
-        [Display(Name ="E-mail")]
-        [EmailAddress]
+        [Required(ErrorMessage = "O campo E-mail é obrigatório"), Display(Name = "E-mail")]
+        [EmailAddress(ErrorMessage = "E-mail inválido")]
         public string Email { get; set; }
 
-        [Display(Name ="Senha")]
+        [Required(ErrorMessage = "O campo Senha é obrigatório"), Display(Name = "Senha"), StringLength(50, MinimumLength = 8, ErrorMessage = "O campo Nome deve ter entre 8 a 50 caracteres")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
