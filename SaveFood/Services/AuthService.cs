@@ -1,6 +1,9 @@
-﻿using SaveFood.Models;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using SaveFood.Models;
 using SaveFood.Repositories;
 using SaveFood.Services.Enums;
+using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace SaveFood.Services
 {
@@ -12,19 +15,31 @@ namespace SaveFood.Services
             _userRepository = userRepository;
         }
 
-        public AuthStatus ValidateUser(User currentUser)
+        public ClaimsPrincipal CreateAuth(User user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Name, user.Name)
+            };
+
+            return new ClaimsPrincipal(new ClaimsIdentity(
+                claims, CookieAuthenticationDefaults.AuthenticationScheme));
+        }
+
+        public (AuthStatus, User) ValidateUser(User currentUser)
         {
             var user = _userRepository.SearchByEmail(currentUser.Email);
             if (user == null)
-                return AuthStatus.UserNotFound;
+                return (AuthStatus.UserNotFound, null);
 
             currentUser.Salt = user.Salt;
             currentUser.EncryptPassword();
 
             if (user.Password != currentUser.Password)
-                return AuthStatus.WrongPassword;
+                return (AuthStatus.WrongPassword, null);
 
-            return AuthStatus.Authorized;
+            return (AuthStatus.Authorized, user);
         }
     }
 }

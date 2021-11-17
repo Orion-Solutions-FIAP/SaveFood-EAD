@@ -91,6 +91,10 @@ body {
     margin-right: 15px;
 }
 
+.btn-logout {
+    background-color: #393E41;
+}
+
 .btn-save {
     background-color: #2E933C;
 }
