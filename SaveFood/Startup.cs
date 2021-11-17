@@ -29,6 +29,7 @@ namespace SaveFood
             services.AddDbContext<SaveFoodContext>(op => op.UseSqlServer(Configuration.GetConnectionString("ConnectionSqlServer")));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IStorageRepository, StorageRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             services.AddScoped<IAuthService,AuthService>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

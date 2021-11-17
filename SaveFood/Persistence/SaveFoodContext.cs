@@ -7,6 +7,7 @@ namespace SaveFood.Persistence
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Storage> Storages { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public SaveFoodContext(DbContextOptions options) : base(options)
         {
