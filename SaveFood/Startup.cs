@@ -10,9 +10,6 @@ using SaveFood.Persistence;
 using SaveFood.Repositories;
 using SaveFood.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SaveFood
 {
@@ -31,9 +28,9 @@ namespace SaveFood
             services.AddControllersWithViews();
             services.AddDbContext<SaveFoodContext>(op => op.UseSqlServer(Configuration.GetConnectionString("ConnectionSqlServer")));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IStorageRepository, StorageRepository>();
 
             services.AddScoped<IAuthService,AuthService>();
-
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(op=> { op.ExpireTimeSpan = TimeSpan.FromMinutes(30); });
         }

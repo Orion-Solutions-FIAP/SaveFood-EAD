@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SaveFood.Helpers;
+﻿using SaveFood.Helpers;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,7 +19,6 @@ namespace SaveFood.Models
             Password = login.Password;
         }
 
-        [HiddenInput]
         [Column("id_user")]
         public int Id { get; set; }
 
@@ -34,12 +33,12 @@ namespace SaveFood.Models
         public string Email { get; set; }
 
         [Column("ds_pass")]
-        [Required(ErrorMessage = "O campo Senha é obrigatório"), Display(Name = "Senha"), StringLength(50,  MinimumLength = 8, ErrorMessage = "O campo Nome deve ter entre 8 a 50 caracteres")]
+        [Required(ErrorMessage = "O campo Senha é obrigatório"), Display(Name = "Senha"), StringLength(50,  MinimumLength = 8, ErrorMessage = "O campo Senha deve ter entre 8 a 50 caracteres")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [NotMapped]
-        [Required(ErrorMessage = "Confirme a senha"), Display(Name = "Confirme a senha"), StringLength(50, MinimumLength = 8, ErrorMessage = "O campo Nome deve ter entre 8 a 50 caracteres")]
+        [Required(ErrorMessage = "Confirme a senha"), Display(Name = "Confirme a senha"), StringLength(50, MinimumLength = 8, ErrorMessage = "O campo Confirme a senha deve ter entre 8 a 50 caracteres")]
         [DataType(DataType.Password)]
         [Compare(nameof(Password), ErrorMessage ="Opa! sua senha não parece ser igual ao que foi digitado anteriormente.")]
         public string ConfirmPassword { get; set; }
@@ -47,6 +46,7 @@ namespace SaveFood.Models
         [Column("ds_salt")]
         public string Salt { get; set; }
 
+        public virtual ICollection<Storage> Storages { get; set; }
 
         public void GenerateSalt()
         {
