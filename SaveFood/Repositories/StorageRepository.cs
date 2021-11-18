@@ -50,6 +50,11 @@ namespace SaveFood.Repositories
             throw new NotImplementedException();
         }
 
+        public IList<Storage> SearchByUserId(int userId)
+        {
+            return _context.Storages.Where(s => s.UserId == userId).ToList();
+        }
+
         public void Update(Storage entity)
         {
             throw new NotImplementedException();

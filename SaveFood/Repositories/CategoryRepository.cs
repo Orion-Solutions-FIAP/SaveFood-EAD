@@ -1,6 +1,7 @@
 ﻿using SaveFood.Models;
 using SaveFood.Persistence;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -49,6 +50,11 @@ namespace SaveFood.Repositories
         public Category SearchById(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IList<Category> SearchByUserId(int userId)
+        {
+          return _context.Categories.Where(c => c.UserId == userId).ToList();
         }
 
         public void Update(Category entity)
