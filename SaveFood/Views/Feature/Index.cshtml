@@ -1,0 +1,243 @@
+﻿@{
+    ViewData["Title"] = "Features";
+}
+
+<style>
+    .attention {
+        color:brown;
+    }
+</style>
+
+<h1>Funcionalidades</h1>
+<hr />
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-dark" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Cadastro de usuário
+                </button>
+            </h5>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <p>
+                    Um usuário novo deve se cadastrar por meio do botão "Cadastre-se" que se encontra na primeira tela "Sobre nós"
+                    <br />
+                    Na tela de cadastro é necessário os seguintes dados, sendo todos obrigatórios:
+                    <ul>
+                        <li>Nome</li>
+                        <li>E-mail</li>
+                        <li>Senha</li>
+                        <li>Confirme a senha</li>
+                    </ul>
+                    <span class="attention">*O campo "Confirme a senha" deve ser exatamente igual a senha digitada anteriormente.</span><br />
+                    <span class="attention">*Caso o e-mail digitado já tenha cadastro não será possível cadastrar novamente.</span><br />
+                    <span class="attention">*A senha é criptografada antes de ser gravada no banco para a segurança do usuário.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-dark collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Login
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <p>
+                    Para ter acesso a ferramenta Save Food é necessário que o usuário tenha uma conta cadastrada.
+                    O Login pode ser feito através do botão "Login" que se encontra na primeira tela "Sobre nós" <br />
+                    Na tela de login é necessário os seguintes dados, sendo todos obrigatórios:
+                    <ul>
+                        <li>E-mail</li>
+                        <li>Senha</li>
+                    </ul>
+                    <span class="attention">*Os campos devem ser preenchidos com os mesmo dados na qual foi criada a conta.</span><br />
+                    <span class="attention">*O acesso expira em 30 minutos.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-dark collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Home
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <p>
+                    Após o login, na tela incial será possível visualizar as opções:
+                    <ul>
+                        <li>Listagem de Produtos</li>
+                        <li>Lista de Produtos Vencidos</li>
+                        <li>Cadastrar Produto</li>
+                    </ul>
+                    Além das opções disponíveis na barra de menu:
+                    <ul>
+                        <li>Local de Armazenamento</li>
+                        <li>Categoria</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+                <button class="btn btn-dark collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Cadastro de Produto
+                </button>
+            </h5>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+            <div class="card-body">
+                <p>
+                    Para cadastrar um produto o usuário pode acessar a tela de cadastro através do botão "Cadastrar Produto" ou acessar através do menu no dropdown "Produtos"
+                    em "Cadastrar Produto"<br />
+                    Na tela de Cadastro de Produto, o usuário deve preencher os seguintes campos:
+                    <ul>
+                        <li>Nome</li>
+                        <li>Data de Vencimento</li>
+                        <li>Quantidade</li>
+                        <li>Armazenamento</li>
+                        <li>Categoria</li>
+                    </ul>
+                    <span class="attention">*Caso não possua opções para armazenamento, basta clicar no icone <i class="bi bi-plus-circle"></i> ao lado do campo e será redirecionado para a página de cadastro de armazenamento.</span><br />
+                    <span class="attention">*Caso não possua opções para categoria, basta clicar no icone <i class="bi bi-plus-circle"></i> ao lado do campos será redirecionado para a página de cadastro de categoria.</span><br />
+                    <span class="attention">*A data de vencimento só pode ser uma data futura.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingFive">
+            <h5 class="mb-0">
+                <button class="btn btn-dark collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    Cadastro de Local de Armazenamento
+                </button>
+            </h5>
+        </div>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+            <div class="card-body">
+                <p>
+                    Para cadastrar um local de armazenamento o usuário pode acessar a tela de cadastro de produtos através do icone <i class="bi bi-plus-circle"></i> ao lado do campo "Armazenamento" ou acessar através do menu em "Local de Armazenamento"<br />
+                    Para o cadastro é necessário somente o Nome do local de armazenamento sendo ele obrigatório.<br />
+                    <span class="attention">*Caso já exista um local de armazenamento já cadastrado, não será permitido cadastrar novamente.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingSix">
+            <h5 class="mb-0">
+                <button class="btn btn-dark collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    Cadastro de Categoria
+                </button>
+            </h5>
+        </div>
+        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+            <div class="card-body">
+                <p>
+                    Para cadastrar uma Categoria o usuário pode acessar a tela de cadastro de produtos através do icone <i class="bi bi-plus-circle"></i> ao lado do campo "Categoria" ou acessar através do menu em "Categoria"<br />
+                    Para o cadastro é necessário somente o Nome da Categoria sendo ele obrigatório.<br />
+                    <span class="attention">*Caso já exista uma Categoria já cadastrado, não será permitido cadastrar novamente.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingSeven">
+            <h5 class="mb-0">
+                <button class="btn btn-dark collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    Lista de Produtos
+                </button>
+            </h5>
+        </div>
+        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+            <div class="card-body">
+                <p>
+                    A lista de produtos pode ser acessada através do botão "Ir para a lista de produtos" na tela inicial, ou através do menu dropdown "Produto"
+                    em "Lista de produtos".<br />
+                    Na lista é possível ver as seguintes informações:
+                    <ul>
+                        <li>Nome</li>
+                        <li>Quantidade</li>
+                        <li>Armazenamento</li>
+                        <li>Categoria</li>
+                        <li>Data de vencimento</li>
+                    </ul>
+                    <span class="attention">*O usuário pode perquisar por categoria e/ou armazenamento</span><br />
+                    <span class="attention">*O usuário pode editar ou remover os itens da lista</span><br />
+                    <span class="attention">*A lista é ordenada pela data de vencimento</span><br />
+                    <span class="attention">*A lista contém somentes itens Ativos (não vencidos)</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingEigth">
+            <h5 class="mb-0">
+                <button class="btn btn-dark collapsed" data-toggle="collapse" data-target="#collapseEigth" aria-expanded="false" aria-controls="collapseEigth">
+                    Lista de Produtos Vencidos
+                </button>
+            </h5>
+        </div>
+        <div id="collapseEigth" class="collapse" aria-labelledby="headingEigth" data-parent="#accordion">
+            <div class="card-body">
+                <p>
+                    A lista de produtos vencidos pode ser acessada através do botão "Ir para a lista de produtos vencidos" na tela inicial, ou através do menu dropdown "Produto"
+                    em "Produtos Vencidos".<br />
+                    Na lista é possível ver as seguintes informações:
+                    <ul>
+                        <li>Nome</li>
+                        <li>Quantidade</li>
+                        <li>Armazenamento</li>
+                        <li>Categoria</li>
+                        <li>Data de vencimento</li>
+                    </ul>
+                    <span class="attention">*O usuário pode perquisar por categoria e/ou armazenamento</span><br />
+                    <span class="attention">*O usuário pode remover os itens da lista</span><br />
+                    <span class="attention">*A lista é ordenada pela data de vencimento</span><br />
+                    <span class="attention">*A lista contém somentes itens vencidos (não ativos)</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingNine">
+            <h5 class="mb-0">
+                <button class="btn btn-dark collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                    Logout
+                </button>
+            </h5>
+        </div>
+        <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+            <div class="card-body">
+                <p>
+                    O botão de logout fica localizado no menu (parte superior direita). Basta clicar no botão "Logout" e a sessão será encerrada.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTen">
+            <h5 class="mb-0">
+                <button class="btn btn-dark collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                    Diagrama de classes
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
+            <div class="card-body">
+               <img src="~/img/feature/dg-database.png"/>
+            </div>
+        </div>
+    </div>
+</div>

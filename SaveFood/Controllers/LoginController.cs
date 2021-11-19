@@ -27,7 +27,7 @@ namespace SaveFood.Controllers
         public async Task<IActionResult> LoginAsync(Login login) 
         {
             if (!ModelState.IsValid)
-                return View("Index", login);
+                return View("Index");
 
             var (authStatus, user) = _authService.ValidateUser(new User(login));
             if (authStatus == AuthStatus.UserNotFound)
@@ -35,9 +35,12 @@ namespace SaveFood.Controllers
 
             if(authStatus == AuthStatus.WrongPassword)
                 ModelState.AddModelError(nameof(login.Password), "Senha incorreta, verifique se digitou corretamente.");
+           
+            if (!ModelState.IsValid)
+                return View("Index");
 
             await HttpContext.SignInAsync(_authService.CreateAuth(user));
-            return RedirectToAction("Index", "Product");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]

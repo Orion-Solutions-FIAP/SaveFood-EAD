@@ -4,6 +4,10 @@
     ViewData["Title"] = "Product List";
 }
 
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <link rel="stylesheet" href="~/css/product.css" />
+</asp:Content>
+
 <h1>Lista de Produtos</h1>
 
 <message text="@TempData["msg"]"></message>
@@ -15,9 +19,20 @@
     </a>
 </div>
 
+<form class="form-inline mb-3">
+    <select class="form-control mr-2" asp-items="ViewBag.Categories" name="category">
+        <option>Categoria</option>
+    </select>
+    <select class="form-control mr-2" asp-items="ViewBag.Storages" name="storage">
+        <option>Armazenamento</option>
+    </select>
+    <button class="btn btn-secondary" type="submit">Pesquisar<i class="bi bi-search"></i></button>
+</form>
+
+
 <table class="table" style="text-align: center;">
-    <thead class="thead-dark">
-        <tr>
+    <thead>
+        <tr class="table-success">
             <th>Nome</th>
             <th>Quantidade</th>
             <th>Armazenamento</th>
@@ -27,24 +42,35 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Amount</td>
+                    <td>@item.Storage.Name</td>
+                    <td>@item.Category.Name</td>
+                    <td>@item.ExpirationDate?.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id"
+                           class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
+                           data-original-title="Editar">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <button type="button" onclick="productId.value = @item.Id" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal"
+                                data-placement="top" title="" data-original-title="Remover">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@item.Name</td>
-                <td>@item.Amount</td>
-                <td>@item.Storage.Name</td>
-                <td>@item.Category.Name</td>
-                <td>@item.ExpirationDate?.ToShortDateString()</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id"
-                       class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
-                       data-original-title="Editar">
-                        <i class="bi bi-pencil"></i>
-                    </a>
-                    <button type="button" onclick="productId.value = @item.Id" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal"
-                            data-placement="top" title="" data-original-title="Remover">
-                        <i class="bi bi-x"></i>
-                    </button>
+                <td colspan="6" class="text-center">
+                    Nenhum produto ativo
                 </td>
             </tr>
         }
@@ -68,10 +94,17 @@
                     <input type="hidden" name="id" id="productId" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Não <i class="bi bi-x-lg"></i></button>
                     <button type="submit" class="btn btn-danger">Sim <i class="bi bi-exclamation-triangle"></i></button>
-
-                    @*<submit-button class="btn btn-danger" icon="bi bi-exclamation-triangle" text="Sim"></submit-button>*@
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"], [data-toggle="modal"]').tooltip();
+        })
+    </script>
+}

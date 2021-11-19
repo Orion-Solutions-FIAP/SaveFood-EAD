@@ -1,4 +1,4 @@
-﻿.form, .card{
+﻿.form, .card {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,6 @@
 
 .title {
     margin-bottom: 15px;
-    font-family: 'Staatliches', cursive;
     font-size: 50px;
     line-height: 50px;
 }
@@ -35,5 +34,5 @@ label {
 }
 
 .btn-cancel {
-    margin-right: 15px; 
+    margin-right: 15px;
 }

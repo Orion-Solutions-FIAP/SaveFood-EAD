@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using SaveFood.Models;
 using SaveFood.Repositories;
 using System;
+using System.Linq;
 using System.Security.Claims;
 
 namespace SaveFood.Controllers
@@ -23,9 +24,28 @@ namespace SaveFood.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(int? category, int? storage)
         {
-            return View(_productRepository.SearchByUserIdAndStatus(Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier))));
+            LoadingOptions();
+            VerifyExpiredProducts();
+            return View(
+                _productRepository.SearchBy(p =>
+                        (p.UserId == Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier)) && p.Status == Status.Enabled) &&
+                        (p.CategoryId == category || category == null) &&
+                        (p.StorageId == storage || storage == null))
+                    .OrderBy(p => p.ExpirationDate).ToList()
+            );
+        }
+
+        private void VerifyExpiredProducts()
+        {
+            var products = _productRepository.SearchByUserIdAndStatus(Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            foreach (var item in products.Where(p => p.ExpirationDate <= DateTime.Now.Date))
+            {
+                item.Status = Status.Expired;
+                _productRepository.Update(item);
+                _productRepository.Save();
+            }
         }
 
         [HttpGet]
@@ -56,9 +76,16 @@ namespace SaveFood.Controllers
         }
 
         [HttpGet]
-        public IActionResult ExpiredProducts()
+        public IActionResult ExpiredProducts(int? category, int? storage)
         {
-            return View(_productRepository.SearchByUserIdAndStatus(Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier)), Status.Expired));
+            LoadingOptions();
+            VerifyExpiredProducts();
+            return View(_productRepository.SearchBy(p =>
+                                (p.UserId == Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier)) && p.Status == Status.Expired) &&
+                                (p.CategoryId == category || category == null) &&
+                                (p.StorageId == storage || storage == null))
+                            .OrderBy(p => p.ExpirationDate).ToList()
+                    );
         }
 
         [HttpGet]
@@ -91,10 +118,16 @@ namespace SaveFood.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
+            var product = _productRepository.SearchById(id);
+            var redirect = "Index";
+            if (product.Status == Status.Expired) 
+                redirect = "ExpiredProducts";
+
             _productRepository.Delete(id);
             _productRepository.Save();
+
             TempData["msg"] = "Produto removido com sucesso! :D";
-            return RedirectToAction("Index");
+            return RedirectToAction(redirect);
         }
 
         private void LoadingOptions()

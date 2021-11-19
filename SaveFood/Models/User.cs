@@ -48,6 +48,11 @@ namespace SaveFood.Models
 
         public virtual ICollection<Storage> Storages { get; set; }
 
+        public virtual ICollection<Category> Categories { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
+
+
         public void GenerateSalt()
         {
             Salt = CryptographyHelper.GenerateSalt();

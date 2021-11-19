@@ -1,10 +1,9 @@
 ﻿.content {
-    margin: 15px 20px 0 20px;
+    margin: 40px 20px 0 20px;
 }
 
 .title {
     margin-bottom: 30px;
-    font-family: 'Staatliches', cursive;
     font-size: 80px;
     line-height: 50px;
     color: #000000;
@@ -21,12 +20,9 @@
 }
 
 .btn-home {
-    width: 170px;
     height: 52px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    font-family: 'Staatliches', cursive;
     font-size: 25px;
-    color: #F6F7EB;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,11 +30,13 @@
 
 .btn-register {
     background-color: #393E41;
+    width: 170px;
 }
 
 .btn-login {
     background-color: #E94F37;
     margin-left: 50px;
+    width: 170px;
 }
 
 .home-img {

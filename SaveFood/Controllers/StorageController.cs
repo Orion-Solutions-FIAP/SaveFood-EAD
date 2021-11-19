@@ -25,12 +25,15 @@ namespace SaveFood.Controllers
         [HttpPost]
         public IActionResult Create(Storage storage)
         {
+            if (!ModelState.IsValid)
+                return View();
+
             storage.UserId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             if (_storageRepository.Exist(storage))
                 ModelState.AddModelError(nameof(storage.Name), $"Já existe o armazenamento {storage.Name}");
 
             if (!ModelState.IsValid)
-                return View(storage);
+                return View();
 
             _storageRepository.Create(storage);
             _storageRepository.Save();

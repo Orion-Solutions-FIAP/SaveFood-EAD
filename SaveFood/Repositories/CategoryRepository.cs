@@ -1,7 +1,7 @@
-﻿using SaveFood.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SaveFood.Models;
 using SaveFood.Persistence;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -15,7 +15,6 @@ namespace SaveFood.Repositories
         {
             _context = context;
         }
-
         public void Create(Category entity)
         {
             _context.Categories.Add(entity);

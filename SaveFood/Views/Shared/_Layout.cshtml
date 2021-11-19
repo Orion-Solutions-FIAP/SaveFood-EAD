@@ -18,48 +18,59 @@
     <header>
         @if (!User.Identity.IsAuthenticated)
         {
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm mb-3">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" class="logo" /></a>
-            </nav>               
+                <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                                Sobre nós
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Feature" asp-action="Index">Funcionalidades</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         }
         else
         {
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow mb-3">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" class="logo" /></a>
-                
-                <div class="container">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Lista de Produtos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="ExpiredProducts">Produtos Vencidos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Create">Cadastrar Produto</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Storage" asp-action="Create">Armazenamento</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Create">Categoria</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Sobre nós</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <form asp-action="Logout" asp-controller="Login" class="form-inline my-2 my-lg-0">
-                        <button type="submit" class="btn btn-secondary btn-logout">Logout <i class="bi bi-box-arrow-right"></i></button>
+                <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                                Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Produto</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Product" asp-action="Index">Lista de Produtos</a>
+                                <a class="dropdown-item" asp-controller="Product" asp-action="ExpiredProducts">Produtos Vencidos</a>
+                                <a class="dropdown-item" asp-controller="Product" asp-action="Create">Cadastrar Produto</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Storage" asp-action="Create">Local de Armazenamento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Category" asp-action="Create">Categoria</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0" asp-action="Logout" asp-controller="Login">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout <i class="bi bi-box-arrow-right"></i></button>
                     </form>
                 </div>
             </nav>
         }
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -68,7 +79,7 @@
     </div>
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - SaveFood - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - Save Food - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

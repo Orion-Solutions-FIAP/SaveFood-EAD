@@ -18,10 +18,16 @@ namespace SaveFood.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(User user) 
+        public IActionResult Create(User user)
         {
             if (!ModelState.IsValid)
-                return View(user);
+                return View();
+
+            if (_userRepository.SearchByEmail(user.Email) != null)
+                ModelState.AddModelError(nameof(user.Email), "Já existe uma conta com este e-mail");
+
+            if (!ModelState.IsValid)
+                return View();
 
             _userRepository.Create(user);
             _userRepository.Save();

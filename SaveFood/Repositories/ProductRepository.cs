@@ -39,19 +39,25 @@ namespace SaveFood.Repositories
 
         public IList<Product> SearchBy(Expression<Func<Product, bool>> filter)
         {
-            throw new NotImplementedException();
+            return _context.Products.Where(filter)
+                    .Include(p => p.Storage)
+                    .Include(p => p.Category).ToList();
         }
 
         public Product SearchById(int id)
         {
-            return _context.Products.AsNoTracking().Include(p => p.Storage).Include(p => p.Category)
-                .FirstOrDefault(p => p.Id == id); ;
+            return _context.Products.AsNoTracking()
+                .Include(p => p.Storage)
+                .Include(p => p.Category)
+                .FirstOrDefault(p => p.Id == id);
         }
 
         public IList<Product> SearchByUserIdAndStatus(int userId, Status status = Status.Enabled)
         {
-            return _context.Products.Include(p => p.Storage).Include(p => p.Category)
-                    .Where(p => p.UserId == userId && p.Status == status).ToList();
+            return _context.Products
+                .Include(p => p.Storage)
+                .Include(p => p.Category)
+                .Where(p => p.UserId == userId && p.Status == status).ToList();
         }
 
         public void Update(Product entity)

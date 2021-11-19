@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SaveFood.Models
@@ -18,5 +19,7 @@ namespace SaveFood.Models
 
         [ForeignKey(nameof(UserId))]
         public User User { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

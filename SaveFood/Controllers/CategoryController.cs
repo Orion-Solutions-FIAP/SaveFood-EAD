@@ -24,12 +24,15 @@ namespace SaveFood.Controllers
         [HttpPost]
         public IActionResult Create(Category category) 
         {
+            if (!ModelState.IsValid)
+                return View();
+
             category.UserId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             if (_categoryRepository.Exist(category))
                 ModelState.AddModelError(nameof(category.Name), $"Já existe a categoria {category.Name}");
 
             if (!ModelState.IsValid)
-                return View(category);
+                return View();
 
             _categoryRepository.Create(category);
             _categoryRepository.Save();

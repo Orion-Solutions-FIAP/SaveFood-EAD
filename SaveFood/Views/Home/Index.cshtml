@@ -9,7 +9,8 @@
 <div class="content form-group">
     <div class="form-inline">
         <div>
-            <h1 class="title">Save food</h1>
+
+            <h1 class="title" style="@Html.Raw(User.Identity.IsAuthenticated ? "font-size: 55px" :  "")">@(User.Identity.IsAuthenticated ? "Seja bem vindo ao " : "")Save food</h1>
             <p class="about">
                 O desperdício de alimentos é um dos grandes problemas que agravam a situação da fome no mundo.
                 Visando diminuir o descarte de alimentos vencidos no lixo e uma melhor gerenciamento de alimentos dentro de casa,
@@ -27,5 +28,23 @@
             <a asp-action="Create" asp-controller="User" class="btn btn-home btn-register">Cadastre-se</a>
             <a asp-action="Index" asp-controller="Login" class="btn btn-home btn-login">Login</a>
         </div>
+    }
+    else
+    {
+        <div class="form-inline">
+            <a asp-action="Index" asp-controller="Product" class="btn btn-primary btn-home">
+                Ir para lista de produtos <i class="bi bi-arrow-right"></i>
+            </a>
+             <a asp-action="Create" asp-controller="Product" style="margin-left: 50px;" class="btn btn-success btn-home">
+                Cadastrar Produto <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="form-inline">
+            <a asp-action="ExpiredProducts" asp-controller="Product" style="margin-top: 10px;" class="btn btn-warning btn-home">
+                Ir para lista de Produtos Vencidos<i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
     }
 </div>

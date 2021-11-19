@@ -34,7 +34,10 @@ namespace SaveFood
 
             services.AddScoped<IAuthService,AuthService>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(op=> { op.ExpireTimeSpan = TimeSpan.FromMinutes(30); });
+                .AddCookie(op=> { 
+                    op.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                    op.LoginPath = "/Login/Index";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

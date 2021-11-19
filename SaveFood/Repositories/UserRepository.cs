@@ -25,22 +25,18 @@ namespace SaveFood.Repositories
         {
             throw new NotImplementedException();
         }
-
         public IList<User> List()
         {
             return _context.Users.ToList();
         }
-
         public void Save()
         {
             _context.SaveChanges();
         }
-
         public IList<User> SearchBy(Expression<Func<User, bool>> filter)
         {
             throw new NotImplementedException();
         }
-
         public User SearchByEmail(string email)
         {
             return _context.Users.Where(u => u.Email == email).FirstOrDefault();

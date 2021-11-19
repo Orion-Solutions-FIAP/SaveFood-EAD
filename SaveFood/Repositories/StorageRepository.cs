@@ -1,4 +1,5 @@
-﻿using SaveFood.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SaveFood.Models;
 using SaveFood.Persistence;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,6 @@ namespace SaveFood.Repositories
         {
             _context = context;
         }
-
         public void Create(Storage entity)
         {
             _context.Storages.Add(entity);
@@ -49,7 +49,6 @@ namespace SaveFood.Repositories
         {
             throw new NotImplementedException();
         }
-
         public IList<Storage> SearchByUserId(int userId)
         {
             return _context.Storages.Where(s => s.UserId == userId).ToList();

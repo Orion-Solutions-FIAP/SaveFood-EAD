@@ -29,7 +29,7 @@ namespace SaveFood.Models
         public int? CategoryId { get; set; }
 
         [Column("nm_product")]
-        [Required(ErrorMessage = "O campo Nome é obrigatório"), Display(Name = "Nome"), StringLength(60, MinimumLength = 5, ErrorMessage = "O campo Nome deve ter entre 2 a 40 caracteres")]
+        [Required(ErrorMessage = "O campo Nome é obrigatório"), Display(Name = "Nome"), StringLength(60, MinimumLength = 2, ErrorMessage = "O campo Nome deve ter entre 2 a 60 caracteres")]
         public string Name { get; set; }
         
         [Column("dt_expiration")]
